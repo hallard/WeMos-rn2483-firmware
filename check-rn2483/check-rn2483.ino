@@ -38,10 +38,10 @@ SoftwareSerial RN2483Serial(13, 15, false, 128);
 SoftwareSerial DebugSerial(SW_SERIAL_UNUSED_PIN , SW_SERIAL_TX_PIN , false, 128);
 #endif
 
-const char* ssid = "CH2I-HOTSPOT";
-const char* password = "Wireless@Ch2i";
-//const char* ssid = "*******";
-//const char* password = "*******";
+//const char* ssid = "CH2I-HOTSPOT";
+//const char* password = "Wireless@Ch2i";
+const char* ssid = "*******";
+const char* password = "*******";
 
 char thishost[17];
 unsigned long seconds = 0;
