@@ -19,8 +19,7 @@
 #ifndef _PUSHBUTTON_H
 #define _PUSHBUTTON_H
 
-// Switch button
-#define BTN_GPIO            2
+
 #define BTN_DEBOUNCE_DELAY  100
 #define BTN_LONG_PUSH_DELAY 1000
 

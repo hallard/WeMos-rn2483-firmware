@@ -33,8 +33,12 @@ void rn2483Init(uint32_t baudrate)
   // Pin have been swapped to avoid interaction
   // when programming chip over USB serial so 
   // Real Serial is Mapped to GPIO13/GPIO15
-  SERIAL_DEVICE.swap();
-  serialSwapped = true;
+	#ifdef BOARDS_V10
+  #else
+	  SERIAL_DEVICE.swap();
+	  serialSwapped = true;
+  #endif
+
   #endif
 
   SERIAL_DEVICE.flush(); 

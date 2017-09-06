@@ -25,14 +25,23 @@
 #include <NeoPixelAnimator.h>
 #include <NeoPixelBus.h>
 
-#include "pushbutton.h"
-#include "RGBLed.h"
-#include "rn2483.h"
-
 // Define here the target serial you connected to this app
 // -------------------------------------------------------
 // Uncomment this line if you want to use soft serial
 //#define USE_SOFT_SERIAL
+#define BOARDS_V10 // Uncomments for very old boards versiob (1.0)
+
+#ifdef BOARDS_V10
+  #define RN2483_RESET_PIN 15
+  #define BTN_GPIO 14 // Boards V1.0
+#else
+  #define RN2483_RESET_PIN 12
+  #define BTN_GPIO  2  // Boards V1.1+
+#endif
+
+#include "pushbutton.h"
+#include "RGBLed.h"
+#include "rn2483.h"
 
 // Uncomment this line if you want to use Telnet feature
 //#define USE_TELNET
@@ -43,9 +52,13 @@
   #define SERIAL_DEVICE RN2483Serial
   #define SERIAL_DEBUG  Serial
 #else
-  #define SERIAL_DEVICE Serial
-  #define SERIAL_DEBUG  DebugSerial
-  //#define SERIAL_DEBUG  Serial1
+  #ifdef BOARDS_V10
+    #define SERIAL_DEVICE Serial
+    #define SERIAL_DEBUG  Serial1
+  #else
+    #define SERIAL_DEVICE Serial
+    #define SERIAL_DEBUG  DebugSerial
+  #endif
 
 #endif
 

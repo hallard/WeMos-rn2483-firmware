@@ -19,8 +19,6 @@
 #ifndef _RN2483_H
 #define _RN2483_H
 
-#define RN2483_RESET_PIN 15
-
 #define RN2483_STATUS_JOINED            0x00000001
 #define RN2483_STATUS_MAC_STATE         0x0000000E
 #define RN2483_STATUS_AUTO_REPLY        0x00000010

@@ -38,8 +38,14 @@
 SoftwareSerial RN2483Serial(13, 15, false, 128);
 #else
 //SoftwareSerial DebugSerial(SW_SERIAL_UNUSED_PIN ,14, false, 128);
+#ifdef BOARDS_V10
+// 1.0 can use TXD1 on GPIO2 (Serial1)
+#else
+// 1.1+ has switch on TXD1 (GPIO2) but swapped RX/TX so we debug
+// with software Serial on pin1 (TX)like this serial monitor works fine
 #define SW_SERIAL_TX_PIN  1
 SoftwareSerial DebugSerial(SW_SERIAL_UNUSED_PIN , SW_SERIAL_TX_PIN , false, 128);
+#endif
 #endif
 
 const char* ssid = "*******";
@@ -114,6 +120,22 @@ void execCommand(AsyncWebSocketClient * client, char * msg) {
     if (client) {
       client->printf_P(PSTR("Baud Rate : [[b;green;]%d] bps"), br);
       client->printf_P(PSTR("States : radio=[[b;green;]%d]"), rn2483State() );
+
+      #ifdef BOARDS_V10
+      client->printf_P(PSTR("Board Version [[b;green;]1.0]") );
+      #else
+      client->printf_P(PSTR("Board Version [[b;green;]1.1+]") );
+      #endif
+
+      #if defined (BTN_GPIO) 
+      client->printf_P(PSTR("Push Button [[b;green;]GPIO%d]"), BTN_GPIO );
+      #endif
+      #if defined (RN2483_RESET_PIN) 
+      client->printf_P(PSTR("RN2483 Reset [[b;green;]GPIO%d]"), RN2483_RESET_PIN );
+      #endif
+
+
+
     }
 
   // baud only display current Serial Speed
