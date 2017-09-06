@@ -1,8 +1,8 @@
-TCP Network to Serial RN2483 LoraWAN module connected to an ESP8266
-===================================================================
+TCP Network to Serial RN2483 or RN2903 LoraWAN module connected to an ESP8266
+=============================================================================
 
 This is a pure transparent bridge between Wifi and serial using any ESP8266 device for RN2483 LoraWAN module. It's very useful for testing or talking to remote serial device such as RN2483 that have no network connection.
-It's dedicated to works with WeMos [RN2483 shield][8] and I'm Using it with (The Things Network)[https://www.thethingsnetwork.org/] LoraWan Backend but you can use other provider.
+It's dedicated to works with WeMos [RN2483 shield][8] and I'm Using it with [The Things Network](https://www.thethingsnetwork.org/) LoraWan Backend but you can use other provider.
 
 I'm using it on WeMos target, you can find more information on WeMos on their [site][1], it's really well documented.
 
@@ -11,7 +11,7 @@ This project is mainly based on excellent @me-no-dev [ESPAsyncWebServer][4] libr
 Documentation
 =============
 
-Once uploaded SPIFFS data (web page) you can connect with a browser to http://ip_of_esp8266 and start playing with it.
+Once uploaded SPIFFS data (web page) you can connect with a browser to `http://ip_of_esp8266` and start playing with it.
 The main `index.htm` web page include a full javascript terminal so you can type command and receive response.
 
 The main web page can also be hosted anywhere and it's not mandatory to have it on the device (except if device and your computer have no access on Internet). I've published the fully fonctionnal WEB page from github so you can access it from [here][9] and then connect to your device on wich you flashed the firmware.
@@ -43,7 +43,7 @@ Push button (long press for different behaviour)
 - pressed between 2 and 3 seconds (led blink green) => enable autosend packet every 300 seconds
 - pressed between 3 and 4 seconds (led blink yellow)=> disable autosend packet
 
-PS : If you just want hardware is okay, use the simplified `check-rn2483` sketch
+PS : If you just want hardware is okay, use the simplified `check-rn2483` [sketch](https://github.com/hallard/WeMos-rn2483-firmware/tree/master/check-rn2483)
 
 Test web page without ESP8266
 -----------------------------
@@ -190,6 +190,7 @@ $mac join otaa
 ### So what does this looks like ?
 
 <img src="https://raw.githubusercontent.com/hallard/WeMos-rn2483-firmware/master/pictures/web-terminal-v1.jpg" alt="Web Console">
+
 <img src="https://raw.githubusercontent.com/hallard/WeMos-rn2483-firmware/master/pictures/web-terminal-v2.png" alt="Web Console">
 
 See all in action    
