@@ -16,14 +16,6 @@
 # reset RN2483 module 
 # $reset 15
 
-# Wired GPIO to output 
-# $sys set pinmode GPIO0 digout
-# $sys set pinmode GPIO11 digout
-
-# Light on the LED on all GPIO
-# $sys set pindig GPIO1 0
-# $sys set pindig GPIO11 1
-
 # For Hardware boards V1.1+
 # -------------------------
 # reset RN2483 module 
@@ -38,7 +30,7 @@ $sys set pinmode GPIO10 digout
 $sys set pindig GPIO10 1
 
 # Light off Green (Light when joined later)
-$sys set pindig GPIO10 0
+$sys set pindig GPIO1 0
 
 
 # Custom config here 
