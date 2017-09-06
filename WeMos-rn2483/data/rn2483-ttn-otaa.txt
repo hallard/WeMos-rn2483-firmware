@@ -1,0 +1,27 @@
+# Startup config file for Microchip RN2483 join TTN in otaa
+# commands prefixed by ! or $ are executed by ESP all others passed to serial module (RN2483)
+# command starting with $ wait until device return \n 
+# RN2483 always return string followed by "\r\n" on each command (ex "ok\r\n")
+# so $ wait a response (good or not) before sending next command
+# !delay or any $ are not executed when connected via browser web terminal (websocket)
+# See schematics here https://github.com/hallard/WeMos-RN2483
+
+# Your device should have been registered on TTN before using, here is how to
+# On the RN2483, use `sys get hweui` and `mac get deveui` 
+# you then get the devices hweui & deveui, They are probably the same
+# then register device on TTN console dashboard
+
+# Then you must setup your keys (obtained from TTN console dashboard)
+# Personnaly I prefer setup the 3 fixed values in TTN dashboard
+# then put them into the RN2483 module 
+
+# then on RN2483 device (1st setup, then don't need to be set again)
+# $mac set appeui YOUR_APP_EUI
+# $mac set appkey YOUR_APP_KEY
+# $mac set deveui YOUR_DEV_EUI
+# and saved with `mac save`
+# $mac save
+
+# Then Join TTN Network
+$mac join otaa
+
